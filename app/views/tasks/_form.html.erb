@@ -1,0 +1,24 @@
+<!-- app/views/tasks/_form.html.erb -->
+<%= form_with model: @task, local: true do |form| %>
+  <div>
+    <%= form.label :tile %><br>
+    <%= form.text_field :tile %>
+  </div>
+
+  <div>
+    <%= form.label :details %><br>
+    <%= form.text_area :details %>
+  </div>
+
+  <%# Only show "Completed" checkbox when editing, NOT when creating a new task %>
+  <% if @task.persisted? %>
+    <div>
+      <%= form.label :completed %><br>
+      <%= form.check_box :completed %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
